@@ -2,97 +2,148 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Entdecke deine Möglichkeiten</title>
+  <title>Wirtschaftsingenieurwesen Maschinenbau – HS Kempten</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Apple-typische Schriftart -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Fonts für modernes Design -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(120deg, #f4f6fa 0%, #e9ecf3 100%);
+    }
+    body {
       min-height: 100vh;
-      color: #202124;
-      overflow-x: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #fff;
+      background: url('https://www.hs-kempten.de/fileadmin/_processed_/2/1/csm_Campus-Kempten_4e053a5c48.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      z-index: 0;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13, 39, 58, 0.50);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px 40px 20px;
     }
     h1 {
-      text-align: center;
-      margin-top: 60px;
-      font-size: 3em;
+      margin-top: 40px;
+      font-size: 2.5em;
       font-weight: 700;
       letter-spacing: -1px;
-      background: linear-gradient(90deg, #0071e3 20%, #50c9c3 80%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.27);
+    }
+    .studiengang-box {
+      background: rgba(255,255,255,0.14);
+      border-radius: 16px;
+      padding: 32px 24px 24px 24px;
+      margin: 32px auto 48px auto;
+      max-width: 650px;
+      box-shadow: 0 6px 24px 0 rgba(0,0,0,0.13);
+      backdrop-filter: blur(2.5px);
+      color: #f8f8f8;
+    }
+    .studienverlauf-link {
+      display: block;
+      text-align: center;
+      margin: 32px auto 0 auto;
+    }
+    .studienverlauf-img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px 0 rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+      cursor: pointer;
+      border: 2px solid #fff3;
+    }
+    .studienverlauf-img:hover {
+      transform: scale(1.04) rotate(-1.5deg);
+      border: 2px solid #ffb300;
+    }
+    .berufe-section {
+      margin: 60px auto 0 auto;
+    }
+    .berufe-title {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 28px;
+      font-weight: 700;
+      color: #ffd700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.27);
     }
     .berufe-container {
-      max-width: 1200px;
-      margin: 50px auto 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
+      gap: 34px;
       justify-content: center;
-      align-items: stretch;
     }
     .beruf-card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 30px;
-      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
-      width: 300px;
-      min-height: 400px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      width: 260px;
+      min-height: 340px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-decoration: none;
-      color: inherit;
-      overflow: hidden;
-      position: relative;
+      color: #fff;
+      box-shadow: 0 8px 32px 0 rgba(20,30,80,0.15);
+      transition: transform 0.24s cubic-bezier(.4,0,.2,1), box-shadow 0.24s cubic-bezier(.4,0,.2,1);
       opacity: 0;
-      transform: translateY(40px) scale(0.98);
-      animation: fadein 0.8s cubic-bezier(.4,0,.2,1) forwards;
+      transform: translateY(40px) scale(0.97);
+      animation: fadein 0.7s cubic-bezier(.4,0,.2,1) forwards;
     }
-    .beruf-card:nth-child(1) { animation-delay: 0.1s; }
-    .beruf-card:nth-child(2) { animation-delay: 0.2s; }
-    .beruf-card:nth-child(3) { animation-delay: 0.3s; }
-    .beruf-card:nth-child(4) { animation-delay: 0.4s; }
+    .beruf-card:nth-child(1) { animation-delay: 0.12s; }
+    .beruf-card:nth-child(2) { animation-delay: 0.22s; }
+    .beruf-card:nth-child(3) { animation-delay: 0.32s; }
+    .beruf-card:nth-child(4) { animation-delay: 0.42s; }
     .beruf-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 20px 40px 0 rgba(60,60,60,0.16);
-      transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1);
+      transform: translateY(-12px) scale(1.04) rotate(-1deg);
+      box-shadow: 0 20px 40px 0 rgba(30,30,70,0.18);
     }
     .beruf-card img {
       width: 100%;
-      height: 180px;
+      height: 140px;
       object-fit: cover;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-      filter: brightness(0.97) saturate(1.08);
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      filter: brightness(0.98) saturate(1.08);
       transition: filter 0.3s;
     }
     .beruf-card:hover img {
-      filter: brightness(1.07) saturate(1.3);
+      filter: brightness(1.08) saturate(1.2);
     }
     .card-content {
-      padding: 28px 24px 24px 24px;
+      padding: 22px 16px 16px 16px;
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     .card-content h2 {
-      font-size: 1.5em;
+      font-size: 1.22em;
       font-weight: 700;
-      margin: 0 0 12px 0;
-      color: #0071e3;
-      letter-spacing: -0.5px;
+      margin: 0 0 10px 0;
+      color: #ffd700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.19);
     }
     .card-content p {
-      font-size: 1.07em;
-      color: #444;
+      font-size: 1em;
+      color: #f4f4f4;
       text-align: center;
       margin: 0;
     }
@@ -103,61 +154,106 @@
       }
     }
     @media (max-width: 900px) {
-      .berufe-container {
-        gap: 25px;
-      }
-      .beruf-card {
-        width: 90vw;
-        min-width: 220px;
-      }
+      .berufe-container { gap: 18px; }
+      .beruf-card { width: 95vw; min-width: 0; }
     }
     @media (max-width: 600px) {
-      h1 { font-size: 2em; margin-top:28px;}
-      .berufe-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-      }
-      .beruf-card {
-        width: 98vw;
-        min-width: 0;
-      }
-      .card-content { padding: 18px 12px 16px 12px; }
+      h1 { font-size: 1.3em; margin-top:18px;}
+      .studiengang-box { padding: 16px 8px 16px 8px; }
+      .berufe-title { font-size: 1.2em; }
+      .card-content { padding: 12px 4px 12px 4px; }
+    }
+    .studienverlauf-btn {
+      display: inline-block;
+      margin: 22px auto 0 auto;
+      padding: 14px 28px;
+      background: #ffd700;
+      color: #1d2b32;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1em;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+      transition: background 0.18s;
+      border: none;
+      cursor: pointer;
+    }
+    .studienverlauf-btn:hover {
+      background: #ffb300;
+      color: #fff;
     }
   </style>
 </head>
 <body>
-  <h1>Entdecke deine Möglichkeiten</h1>
-  <div class="berufe-container">
-    <a class="beruf-card" href="#">
-      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Softwareentwickler">
-      <div class="card-content">
-        <h2>Softwareentwickler:in</h2>
-        <p>Gestalte die digitale Zukunft und entwickle Apps, Webseiten und Systeme.</p>
+  <div class="content">
+    <h1>Wirtschaftsingenieurwesen Maschinenbau an der Hochschule Kempten</h1>
+    <div class="studiengang-box">
+      <p>
+        Der Bachelorstudiengang Wirtschaftsingenieurwesen Maschinenbau an der HS Kempten vereint technisches Know-how mit wirtschaftlichem Denken. Du lernst, wie innovative Produkte entwickelt, produziert und erfolgreich am Markt platziert werden.
+      </p>
+      <p>
+        Studiendauer: 7 Semester &nbsp;|&nbsp; Abschluss: B.Eng. Wirtschaftsingenieurwesen Maschinenbau<br>
+        <b>Schwerpunkte:</b> Maschinenbau, Betriebswirtschaft, Projektmanagement, Digitalisierung, Fertigungstechnik, Controlling, Praxissemester.
+      </p>
+      <div class="studienverlauf-link">
+        <a href="https://www.hs-kempten.de/fileadmin/user_upload/wim_beng_studienverlaufsplan.pdf" target="_blank" class="studienverlauf-btn">
+          Studienverlaufsplan anzeigen
+        </a>
+        <br>
+        <a href="https://www.hs-kempten.de/fileadmin/_processed_/2/e/csm_WIM_BEng_Studienverlauf_Schaubild.jpg" target="_blank">
+          <img src="https://www.hs-kempten.de/fileadmin/_processed_/2/e/csm_WIM_BEng_Studienverlauf_Schaubild.jpg" alt="Studienverlaufsplan Wirtschaftsingenieurwesen Maschinenbau" class="studienverlauf-img">
+        </a>
       </div>
-    </a>
-    <a class="beruf-card" href="#">
-      <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd67?auto=format&fit=crop&w=600&q=80" alt="Krankenschwester">
-      <div class="card-content">
-        <h2>Krankenschwester / Krankenpfleger</h2>
-        <p>Hilf Menschen im Gesundheitswesen und sorge für das Wohl der Patienten.</p>
+    </div>
+
+    <div class="berufe-section">
+      <div class="berufe-title">Berufsperspektiven nach dem Studium</div>
+      <div class="berufe-container">
+        <a class="beruf-card" href="#" title="Projektmanager:in">
+          <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80" alt="Projektmanager:in">
+          <div class="card-content">
+            <h2>Projektmanager:in</h2>
+            <p>Leite technische und wirtschaftliche Projekte, koordiniere Teams und sorge für reibungslose Abläufe.</p>
+          </div>
+        </a>
+        <a class="beruf-card" href="#" title="Produktionsleiter:in">
+          <img src="https://images.unsplash.com/photo-1503389152951-9c3d8bcaab73?auto=format&fit=crop&w=600&q=80" alt="Produktionsleiter:in">
+          <div class="card-content">
+            <h2>Produktionsleiter:in</h2>
+            <p>Verantworte die effiziente Fertigung, optimiere Prozesse und führe Teams in der Produktion.</p>
+          </div>
+        </a>
+        <a class="beruf-card" href="#" title="Technische:r Einkäufer:in">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Technische:r Einkäufer:in">
+          <div class="card-content">
+            <h2>Technische:r Einkäufer:in</h2>
+            <p>Beschaffe komplexe technische Komponenten und führe Preisverhandlungen mit internationalen Partnern.</p>
+          </div>
+        </a>
+        <a class="beruf-card" href="#" title="Qualitätsmanager:in">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Qualitätsmanager:in">
+          <div class="card-content">
+            <h2>Qualitätsmanager:in</h2>
+            <p>Sichere die Qualität von Produkten und Prozessen – von der Entwicklung bis zur Auslieferung.</p>
+          </div>
+        </a>
+        <a class="beruf-card" href="#" title="Vertriebsingenieur:in">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Vertriebsingenieur:in">
+          <div class="card-content">
+            <h2>Vertriebsingenieur:in</h2>
+            <p>Berate Kunden technisch, erstelle Angebote und begleite Projekte vom Erstkontakt bis zum Abschluss.</p>
+          </div>
+        </a>
+        <a class="beruf-card" href="#" title="Consultant / Unternehmensberater:in">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Consultant">
+          <div class="card-content">
+            <h2>Consultant / Unternehmensberater:in</h2>
+            <p>Analysiere und optimiere Prozesse, unterstütze Unternehmen bei strategischen Entscheidungen.</p>
+          </div>
+        </a>
+        <!-- Weitere Berufe können ergänzt werden -->
       </div>
-    </a>
-    <a class="beruf-card" href="#">
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Elektroniker">
-      <div class="card-content">
-        <h2>Elektroniker:in</h2>
-        <p>Arbeite mit Technik, Strom und Innovation – von Industrie bis Smart Home.</p>
-      </div>
-    </a>
-    <a class="beruf-card" href="#">
-      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Mediengestalter">
-      <div class="card-content">
-        <h2>Mediengestalter:in</h2>
-        <p>Setze kreative Ideen in Grafik, Video und Webdesign professionell um.</p>
-      </div>
-    </a>
-    <!-- Du kannst beliebig weitere Berufe ergänzen -->
+    </div>
   </div>
 </body>
 </html>
