@@ -87,3 +87,228 @@
     }
 
     .toggle-btn:hover {
+      background-color: currentColor;
+      color: var(--color-light-bg);
+    }
+
+    body.dark .toggle-btn:hover {
+      color: var(--color-dark-bg);
+    }
+
+    /* Tabs Container */
+    .tabs {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      color: var(--color-light-text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    body.dark .tabs {
+      background: rgba(64, 201, 198, 0.1); /* leicht transparent türkis/dunkel */
+      color: var(--color-dark-text);
+      box-shadow: 0 12px 30px rgba(64, 201, 198, 0.2);
+    }
+
+    /* Tab Buttons */
+    .tab-buttons {
+      display: flex;
+      border-bottom: 2px solid var(--color-light-accent);
+      border-radius: 20px 20px 0 0;
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+    }
+
+    .tab-buttons::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      flex: 1 1 auto;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      border-bottom: 4px solid transparent;
+      transition: border-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    .tab-btn:hover {
+      color: var(--color-light-accent);
+    }
+
+    body.dark .tab-btn:hover {
+      color: var(--color-dark-accent);
+    }
+
+    .tab-btn.active {
+      border-bottom-color: var(--color-light-accent);
+      color: var(--color-light-accent);
+    }
+
+    body.dark .tab-btn.active {
+      border-bottom-color: var(--color-dark-accent);
+      color: var(--color-dark-accent);
+    }
+
+    /* Tab Content */
+    .tab-content {
+      padding: 2rem 3rem;
+      min-height: 300px;
+      font-size: 1.15rem;
+      font-weight: 400;
+      cursor: text;
+      user-select: text;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Placeholder Stil */
+    .placeholder {
+      color: #888;
+      font-style: italic;
+      user-select: none;
+    }
+
+    /* Scrollbar ausblenden auf Tabs */
+    .tab-buttons::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      .tab-content {
+        padding: 1.5rem 1.5rem;
+        font-size: 1rem;
+      }
+      .toggle-btn {
+        font-size: 1rem;
+        padding: 0.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 contenteditable="true" aria-label="Name bearbeiten">Dein Name hier</h1>
+    <p contenteditable="true" aria-label="Begrüßung bearbeiten">Willkommen auf meiner persönlichen Homepage</p>
+  </header>
+
+  <button class="toggle-btn" aria-label="Wechsel zwischen Light und Dark Mode">🌙 Modus wechseln</button>
+
+  <div class="tabs" role="tablist" aria-label="Hauptinhalte">
+    <div class="tab-buttons">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-ueber-mich" id="btn-ueber-mich" tabindex="0">Über mich</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-werdegang" id="btn-werdegang" tabindex="-1">Werdegang</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-projekte" id="btn-projekte" tabindex="-1">Projekte</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-kontakt" id="btn-kontakt" tabindex="-1">Kontakt</button>
+    </div>
+
+    <section id="tab-ueber-mich" class="tab-content" role="tabpanel" aria-labelledby="btn-ueber-mich">
+      <p contenteditable="true" aria-label="Informationen über dich bearbeiten" class="placeholder">
+        Schreibe hier etwas über dich...
+      </p>
+    </section>
+
+    <section id="tab-werdegang" class="tab-content" role="tabpanel" aria-labelledby="btn-werdegang" hidden>
+      <p contenteditable="true" aria-label="Werdegang bearbeiten" class="placeholder">
+        Füge hier deinen Werdegang ein...
+      </p>
+    </section>
+
+    <section id="tab-projekte" class="tab-content" role="tabpanel" aria-labelledby="btn-projekte" hidden>
+      <p contenteditable="true" aria-label="Projekte bearbeiten" class="placeholder">
+        Beschreibe hier deine Projekte...
+      </p>
+    </section>
+
+    <section id="tab-kontakt" class="tab-content" role="tabpanel" aria-labelledby="btn-kontakt" hidden>
+      <p contenteditable="true" aria-label="Kontaktinformationen bearbeiten" class="placeholder">
+        Hier kannst du deine Kontaktinformationen eintragen...
+      </p>
+    </section>
+  </div>
+
+  <script>
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const body = document.body;
+
+    // Lightmode initial
+    let darkMode = false;
+
+    toggleBtn.addEventListener('click', () => {
+      darkMode = !darkMode;
+      if (darkMode) {
+        body.classList.add('dark');
+        toggleBtn.textContent = '☀️ Modus wechseln';
+      } else {
+        body.classList.remove('dark');
+        toggleBtn.textContent = '🌙 Modus wechseln';
+      }
+    });
+
+    // Tabs Logik
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('[role="tabpanel"]');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        // Aktive Tabs updaten
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('tabindex', '0');
+
+        // Panels anzeigen/verstecken
+        panels.forEach(panel => {
+          panel.hidden = true;
+        });
+        const activePanel = document.getElementById(tab.getAttribute('aria-controls'));
+        activePanel.hidden = false;
+        activePanel.focus();
+      });
+    });
+
+  </script>
+</body>
+</html>
