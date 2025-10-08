@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Deine Homepage</title>
   <style>
-    /* Reset und Grundstil */
+    /* Reset & Grund */
     * {
       margin: 0;
       padding: 0;
@@ -18,22 +18,22 @@
     :root {
       --color-light-bg: #ffffff;
       --color-light-text: #0a7c86; /* hellblau-türkis */
-      --color-light-accent: #40c9c6; /* türkises Akzent */
-      
+      --color-light-accent: #40c9c6; /* helles türkis */
+
       --color-dark-bg: #000000;
-      --color-dark-text: #0a1f3f; /* dunkelblau */
-      --color-dark-accent: #17375e; /* dunkleres blau */
+      --color-dark-text: #40c9c6; /* hellblau-türkis, gleiche Akzentfarbe im Darkmode */
+      --color-dark-accent: #40c9c6;
     }
 
     body {
       min-height: 100vh;
+      background-color: var(--color-light-bg);
+      color: var(--color-light-text);
+      padding: 2rem 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      background-color: var(--color-light-bg);
-      color: var(--color-light-text);
-      padding: 2rem;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     body.dark {
@@ -42,168 +42,48 @@
     }
 
     header {
+      max-width: 900px;
+      width: 100%;
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     header h1 {
       font-weight: 600;
-      font-size: 3rem;
+      font-size: 3.5rem;
       letter-spacing: 0.05em;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
       animation: fadeInDown 1s ease forwards;
       color: inherit;
+      cursor: text;
     }
 
     header p {
       font-weight: 300;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       opacity: 0.7;
       animation: fadeInUp 1s ease forwards;
       animation-delay: 0.5s;
       color: inherit;
+      cursor: text;
     }
 
-    /* Button für Moduswechsel */
+    /* Toggle Button */
     .toggle-btn {
       cursor: pointer;
       background: transparent;
       border: 2px solid currentColor;
-      padding: 0.5rem 1.5rem;
+      padding: 0.6rem 1.8rem;
       border-radius: 9999px;
-      font-weight: 500;
-      font-size: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
       transition: background-color 0.3s ease, color 0.3s ease;
       margin-bottom: 2rem;
       user-select: none;
       color: inherit;
+      align-self: flex-end;
+      max-width: 900px;
+      width: 100%;
     }
 
     .toggle-btn:hover {
-      background-color: currentColor;
-      color: var(--color-light-bg);
-    }
-
-    body.dark .toggle-btn:hover {
-      color: var(--color-dark-bg);
-    }
-
-    /* Animationskeyframes */
-    @keyframes fadeInDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Hover-Effekt auf Name */
-    header h1:hover {
-      color: var(--color-light-accent);
-      transform: scale(1.05);
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    body.dark header h1:hover {
-      color: var(--color-dark-accent);
-    }
-
-    /* Info-Box */
-    .info-box {
-      max-width: 450px;
-      text-align: center;
-      border-radius: 20px;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(15px);
-      animation: fadeInUp 1s ease forwards;
-      color: inherit;
-      margin-bottom: 2rem;
-    }
-
-    body.dark .info-box {
-      background: rgba(10, 31, 63, 0.85);
-      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-    }
-
-    /* Abschnitt für Werdegang */
-    .career-box {
-      max-width: 450px;
-      border-radius: 20px;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(15px);
-      color: inherit;
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    body.dark .career-box {
-      background: rgba(10, 31, 63, 0.85);
-      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-    }
-
-    /* Platzhalterstil */
-    .placeholder {
-      color: #888;
-      font-style: italic;
-      user-select: none;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1 contenteditable="true" aria-label="Name bearbeiten">Dein Name hier</h1>
-    <p contenteditable="true" aria-label="Begrüßung bearbeiten">Willkommen auf meiner persönlichen Homepage</p>
-  </header>
-
-  <button class="toggle-btn" aria-label="Wechsel zwischen Light und Dark Mode">🌙 Modus wechseln</button>
-
-  <section class="info-box">
-    <h2>Über mich</h2>
-    <p contenteditable="true" aria-label="Informationen über dich bearbeiten" class="placeholder">
-      Schreibe hier etwas über dich...
-    </p>
-  </section>
-
-  <section class="career-box">
-    <h2>Mein Werdegang</h2>
-    <p contenteditable="true" aria-label="Werdegang bearbeiten" class="placeholder">
-      Füge hier deinen Werdegang ein...
-    </p>
-  </section>
-
-  <script>
-    const toggleBtn = document.querySelector('.toggle-btn');
-    const body = document.body;
-
-    let darkMode = false;
-
-    toggleBtn.addEventListener('click', () => {
-      darkMode = !darkMode;
-      if (darkMode) {
-        body.classList.add('dark');
-        toggleBtn.textContent = '☀️ Modus wechseln';
-      } else {
-        body.classList.remove('dark');
-        toggleBtn.textContent = '🌙 Modus wechseln';
-      }
-    });
-  </script>
-</body>
-</html>
