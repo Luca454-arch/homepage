@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
     }
+    html { scroll-behavior: smooth; }
     body {
       min-height: 100vh;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -66,12 +67,21 @@
       border-radius: 18px;
       box-shadow: 0 4px 16px 0 rgba(0,0,0,0.15);
       transition: transform 0.2s;
-      cursor: pointer;
+      cursor: default;
       border: 2px solid #fff3;
+      display: block;
+      margin: 0 auto;
     }
     .studienverlauf-img:hover {
       transform: scale(1.04) rotate(-1.5deg);
       border: 2px solid #ffb300;
+    }
+    .studiumsablauf {
+      text-align: center;
+      margin-top: 12px;
+      color: #ffd700;
+      font-weight: 700;
+      font-size: 1.05em;
     }
     .berufe-section {
       margin: 60px auto 0 auto;
@@ -147,6 +157,21 @@
       text-align: center;
       margin: 0;
     }
+    .beruf-detail {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 22px 18px;
+      margin: 20px auto;
+      max-width: 920px;
+      color: #f1f1f1;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
+    .beruf-detail h3 {
+      margin-top: 0;
+      color: #ffd700;
+      font-size: 1.4em;
+    }
+    .beruf-detail ul { margin: 8px 0 0 20px; }
     @keyframes fadein {
       to {
         opacity: 1;
@@ -163,25 +188,6 @@
       .berufe-title { font-size: 1.2em; }
       .card-content { padding: 12px 4px 12px 4px; }
     }
-    .studienverlauf-btn {
-      display: inline-block;
-      margin: 22px auto 0 auto;
-      padding: 14px 28px;
-      background: #ffd700;
-      color: #1d2b32;
-      border-radius: 16px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1em;
-      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
-      transition: background 0.18s;
-      border: none;
-      cursor: pointer;
-    }
-    .studienverlauf-btn:hover {
-      background: #ffb300;
-      color: #fff;
-    }
   </style>
 </head>
 <body>
@@ -189,62 +195,57 @@
     <h1>Wirtschaftsingenieurwesen Maschinenbau an der Hochschule Kempten</h1>
     <div class="studiengang-box">
       <p>
-        Der Bachelorstudiengang Wirtschaftsingenieurwesen Maschinenbau an der HS Kempten vereint technisches Know-how mit wirtschaftlichem Denken. Du lernst, wie innovative Produkte entwickelt, produziert und erfolgreich am Markt platziert werden.
+        Der Bachelorstudiengang Wirtschaftsingenieurwesen Maschinenbau an der HS Kempten vereint technisches Know-how mit wirtschaftlichem Denken. Du lernst, wie innovative Produkte entwickelt, p[...] 
       </p>
       <p>
         Studiendauer: 7 Semester &nbsp;|&nbsp; Abschluss: B.Eng. Wirtschaftsingenieurwesen Maschinenbau<br>
         <b>Schwerpunkte:</b> Maschinenbau, Betriebswirtschaft, Projektmanagement, Digitalisierung, Fertigungstechnik, Controlling, Praxissemester.
       </p>
       <div class="studienverlauf-link">
-        <a href="https://www.hs-kempten.de/fileadmin/user_upload/wim_beng_studienverlaufsplan.pdf" target="_blank" class="studienverlauf-btn">
-          Studienverlaufsplan anzeigen
-        </a>
-        <br>
-       <a href="Bildschirmfoto_6-10-2025_143234_.jpeg" target="_blank">
-  <img src="Bildschirmfoto_6-10-2025_143234_.jpeg" alt="Studienverlaufsplan Wirtschaftsingenieurwesen Maschinenbau" class="studienverlauf-img">
-</a>
+        <img src="Bildschirmfoto_6-10-2025_143234_.jpeg" alt="Studienverlaufsplan Wirtschaftsingenieurwesen Maschinenbau" class="studienverlauf-img">
+        <div class="studiumsablauf">Studiumsablauf</div>
       </div>
     </div>
 
     <div class="berufe-section">
       <div class="berufe-title">Berufsperspektiven nach dem Studium</div>
       <div class="berufe-container">
-        <a class="beruf-card" href="#" title="Projektmanager:in">
+        <a class="beruf-card" href="#projektmanager" title="Projektmanager:in">
           <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80" alt="Projektmanager:in">
           <div class="card-content">
             <h2>Projektmanager:in</h2>
             <p>Leite technische und wirtschaftliche Projekte, koordiniere Teams und sorge für reibungslose Abläufe.</p>
           </div>
         </a>
-        <a class="beruf-card" href="#" title="Produktionsleiter:in">
+        <a class="beruf-card" href="#produktionsleiter" title="Produktionsleiter:in">
           <img src="https://images.unsplash.com/photo-1503389152951-9c3d8bcaab73?auto=format&fit=crop&w=600&q=80" alt="Produktionsleiter:in">
           <div class="card-content">
             <h2>Produktionsleiter:in</h2>
             <p>Verantworte die effiziente Fertigung, optimiere Prozesse und führe Teams in der Produktion.</p>
           </div>
         </a>
-        <a class="beruf-card" href="#" title="Technische:r Einkäufer:in">
+        <a class="beruf-card" href="#technische-einkaeufer" title="Technische:r Einkäufer:in">
           <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Technische:r Einkäufer:in">
           <div class="card-content">
             <h2>Technische:r Einkäufer:in</h2>
             <p>Beschaffe komplexe technische Komponenten und führe Preisverhandlungen mit internationalen Partnern.</p>
           </div>
         </a>
-        <a class="beruf-card" href="#" title="Qualitätsmanager:in">
+        <a class="beruf-card" href="#qualitaetsmanager" title="Qualitätsmanager:in">
           <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Qualitätsmanager:in">
           <div class="card-content">
             <h2>Qualitätsmanager:in</h2>
             <p>Sichere die Qualität von Produkten und Prozessen – von der Entwicklung bis zur Auslieferung.</p>
           </div>
         </a>
-        <a class="beruf-card" href="#" title="Vertriebsingenieur:in">
+        <a class="beruf-card" href="#vertriebsingenieur" title="Vertriebsingenieur:in">
           <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Vertriebsingenieur:in">
           <div class="card-content">
             <h2>Vertriebsingenieur:in</h2>
             <p>Berate Kunden technisch, erstelle Angebote und begleite Projekte vom Erstkontakt bis zum Abschluss.</p>
           </div>
         </a>
-        <a class="beruf-card" href="#" title="Consultant / Unternehmensberater:in">
+        <a class="beruf-card" href="#consultant" title="Consultant / Unternehmensberater:in">
           <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Consultant">
           <div class="card-content">
             <h2>Consultant / Unternehmensberater:in</h2>
@@ -253,6 +254,81 @@
         </a>
         <!-- Weitere Berufe können ergänzt werden -->
       </div>
+
+      <!-- Detail-Abschnitte für jeden Beruf -->
+      <div id="projektmanager" class="beruf-detail">
+        <h3>Projektmanager:in</h3>
+        <p>Als Projektmanager:in planst, steuerst und überwachst du technische sowie wirtschaftliche Projekte. Du erstellst Projektpläne, koordinierst interdisziplinäre Teams (z. B. Entwicklung, Produktion, Einkauf und Controlling), überwachst Budgets und Zeitpläne und stellst die Einhaltung von Qualitätsanforderungen sicher. Wichtige Fähigkeiten sind Projektmanagement-Methoden (z. B. PRINCE2, Agile/Scrum), Kommunikation, Risikomanagement und Kostenkontrolle.</p>
+        <p>Mögliche Arbeitgeber:</p>
+        <ul>
+          <li>Siemens AG</li>
+          <li>Bosch Gruppe</li>
+          <li>Automobilhersteller (z. B. BMW, Daimler)</li>
+          <li>Maschinenbau-Mittelstand (z. B. Maschinenbauer in der Region)</li>
+          <li>Technologie- und IT-Dienstleister</li>
+        </ul>
+      </div>
+
+      <div id="produktionsleiter" class="beruf-detail">
+        <h3>Produktionsleiter:in</h3>
+        <p>Als Produktionsleiter:in trägst du die Verantwortung für den gesamten Fertigungsbereich. Du optimierst Fertigungsprozesse, steuerst Personal und Maschinen, planst Kapazitäten und sorgst für eine effiziente Materialbereitstellung. Zusätzlich implementierst du Lean- und KVP-Maßnahmen, koordinierst Wartungs- und Instandhaltungsarbeiten und stellst Arbeitssicherheit sowie Qualitätsstandards sicher.</p>
+        <p>Mögliche Arbeitgeber:</p>
+        <ul>
+          <li>Automobilzulieferer</li>
+          <li>Große Industriebetriebe (z. B. Thyssenkrupp, MAN)</li>
+          <li>Elektronik- und Maschinenbauunternehmen</li>
+          <li>Produzierende KMU mit Serienfertigung</li>
+        </ul>
+      </div>
+
+      <div id="technische-einkaeufer" class="beruf-detail">
+        <h3>Technische:r Einkäufer:in</h3>
+        <p>Technische Einkäufer:innen sind verantwortlich für die Beschaffung von Bauteilen, Komponenten und Dienstleistungen. Deine Aufgaben umfassen Marktrecherchen, Lieferantenauswahl, Ausschreibungen, Verhandlung von Preisen und Konditionen sowie Vertragsmanagement. Außerdem koordinierst du Liefertermine, stellst die Qualität von Zukaufteilen sicher und arbeitest eng mit Entwicklung und Produktion zusammen.</p>
+        <p>Mögliche Arbeitgeber:</p>
+        <ul>
+          <li>Automobilhersteller und -zulieferer</li>
+          <li>Elektronik- und Maschinenbauunternehmen</li>
+          <li>Industriehändler und Distributoren</li>
+          <li>Großunternehmen mit zentralem Einkauf (z. B. Bosch, Siemens)</li>
+        </ul>
+      </div>
+
+      <div id="qualitaetsmanager" class="beruf-detail">
+        <h3>Qualitätsmanager:in</h3>
+        <p>Qualitätsmanager:innen entwickeln und implementieren Qualitätsmanagementsysteme (z. B. ISO 9001) und überwachen die Produkt- und Prozessqualität. Du führst Audits durch, analysierst Fehlerursachen, leitest Korrekturmaßnahmen ein und arbeitest mit Lieferanten an Qualitätsverbesserungen. Datenanalyse, Prüfplanung, statistische Prozesslenkung (SPC) und ein tiefes Verständnis von Prüfverfahren gehören ebenfalls zu den Kernaufgaben.</p>
+        <p>Mögliche Arbeitgeber:</p>
+        <ul>
+          <li>Automobilhersteller und Zulieferer</li>
+          <li>Medizintechnik-Unternehmen</li>
+          <li>Maschinen- und Anlagenbauer</li>
+          <li>Unabhängige Prüf- und Zertifizierungsstellen</li>
+        </ul>
+      </div>
+
+      <div id="vertriebsingenieur" class="beruf-detail">
+        <h3>Vertriebsingenieur:in</h3>
+        <p>Vertriebsingenieur:innen verbinden technisches Know-how mit verkäuferischen Fähigkeiten. Du berätst Kunden zu technischen Lösungen, erstellst Angebote, kalkulierst Kosten und begleitest Projekte bis zur Serienlieferung. Häufig unterstützt du den Vertrieb mit technischen Präsentationen, Machbarkeitsanalysen und der Anpassung von Produkten an Kundenanforderungen.</p>
+        <p>Mögliche Arbeitgeber:</p>
+        <ul>
+          <li>Maschinenbau- und Anlagenbauer</li>
+          <li>Elektronik- und Automatisierungsunternehmen</li>
+          <li>Technische Großhändler</li>
+          <li>Service- und Integrationsunternehmen</li>
+        </ul>
+      </div>
+
+      <div id="consultant" class="beruf-detail">
+        <h3>Consultant / Unternehmensberater:in</h3>
+        <p>Als Consultant berätst du Unternehmen in strategischen, organisatorischen oder prozessbezogenen Fragestellungen. Typische Aufgaben sind Prozessanalysen, Erarbeitung von Optimierungsmaßnahmen, Implementierung von Digitalisierungsprojekten und die Unterstützung bei Restrukturierungen. Hier sind analytisches Denken, Präsentations- und Moderationsfähigkeiten sowie Branchenwissen sehr wichtig.</p>
+        <p>Mögliche Arbeitgeber:</p>
+        <ul>
+          <li>Beratungsfirmen (z. B. McKinsey, BCG, Roland Berger)</li>
+          <li>Big Four und Technologieberatungen (z. B. Accenture, PwC)</li>
+          <li>Spezialisierte Ingenieur- und Prozessberatungen</li>
+          <li>Inhouse-Consulting-Abteilungen großer Industrieunternehmen</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </body>
