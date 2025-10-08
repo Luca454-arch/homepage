@@ -1,335 +1,209 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Wirtschaftsingenieurwesen Maschinenbau – HS Kempten</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts für modernes Design -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deine Homepage</title>
   <style>
-    html, body {
-      height: 100%;
+    /* Reset und Grundstil */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
-    html { scroll-behavior: smooth; }
+
+    :root {
+      --color-light-bg: #ffffff;
+      --color-light-text: #0a7c86; /* hellblau-türkis */
+      --color-light-accent: #40c9c6; /* türkises Akzent */
+      
+      --color-dark-bg: #000000;
+      --color-dark-text: #0a1f3f; /* dunkelblau */
+      --color-dark-accent: #17375e; /* dunkleres blau */
+    }
+
     body {
       min-height: 100vh;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: #fff;
-     background: url('csm_Hochschulcampus_Hochschule_Kempten_Sommer_47977b6f11.png') no-repeat center center fixed;
-      background-size: cover;
-      position: relative;
-      z-index: 0;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(13, 39, 58, 0.50);
-      z-index: 1;
-      pointer-events: none;
-    }
-    .content {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 50px 20px 40px 20px;
-    }
-    h1 {
-      margin-top: 40px;
-      font-size: 2.5em;
-      font-weight: 700;
-      letter-spacing: -1px;
-      text-align: center;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.27);
-    }
-    .studiengang-box {
-      background: rgba(255,255,255,0.14);
-      border-radius: 16px;
-      padding: 32px 24px 24px 24px;
-      margin: 32px auto 48px auto;
-      max-width: 650px;
-      box-shadow: 0 6px 24px 0 rgba(0,0,0,0.13);
-      backdrop-filter: blur(2.5px);
-      color: #f8f8f8;
-    }
-    .studienverlauf-link {
-      display: block;
-      text-align: center;
-      margin: 32px auto 0 auto;
-    }
-    .studienverlauf-img {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 18px;
-      box-shadow: 0 4px 16px 0 rgba(0,0,0,0.15);
-      transition: transform 0.2s;
-      cursor: default;
-      border: 2px solid #fff3;
-      display: block;
-      margin: 0 auto;
-    }
-    .studienverlauf-img:hover {
-      transform: scale(1.04) rotate(-1.5deg);
-      border: 2px solid #ffb300;
-    }
-    .studiumsablauf {
-      text-align: center;
-      margin-top: 12px;
-      color: #ffd700;
-      font-weight: 700;
-      font-size: 1.05em;
-    }
-    .berufe-section {
-      margin: 60px auto 0 auto;
-    }
-    .berufe-title {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 28px;
-      font-weight: 700;
-      color: #ffd700;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.27);
-    }
-    .berufe-container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 34px;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      background-color: var(--color-light-bg);
+      color: var(--color-light-text);
+      padding: 2rem;
     }
-    .beruf-card {
-      background: rgba(255,255,255,0.18);
-      border-radius: 20px;
-      width: 260px;
-      min-height: 340px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: #fff;
-      box-shadow: 0 8px 32px 0 rgba(20,30,80,0.15);
-      transition: transform 0.24s cubic-bezier(.4,0,.2,1), box-shadow 0.24s cubic-bezier(.4,0,.2,1);
-      opacity: 0;
-      transform: translateY(40px) scale(0.97);
-      animation: fadein 0.7s cubic-bezier(.4,0,.2,1) forwards;
+
+    body.dark {
+      background-color: var(--color-dark-bg);
+      color: var(--color-dark-text);
     }
-    .beruf-card:nth-child(1) { animation-delay: 0.12s; }
-    .beruf-card:nth-child(2) { animation-delay: 0.22s; }
-    .beruf-card:nth-child(3) { animation-delay: 0.32s; }
-    .beruf-card:nth-child(4) { animation-delay: 0.42s; }
-    .beruf-card:hover {
-      transform: translateY(-12px) scale(1.04) rotate(-1deg);
-      box-shadow: 0 20px 40px 0 rgba(30,30,70,0.18);
-    }
-    .beruf-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      filter: brightness(0.98) saturate(1.08);
-      transition: filter 0.3s;
-    }
-    .beruf-card:hover img {
-      filter: brightness(1.08) saturate(1.2);
-    }
-    .card-content {
-      padding: 22px 16px 16px 16px;
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .card-content h2 {
-      font-size: 1.22em;
-      font-weight: 700;
-      margin: 0 0 10px 0;
-      color: #ffd700;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.19);
-    }
-    .card-content p {
-      font-size: 1em;
-      color: #f4f4f4;
+
+    header {
       text-align: center;
-      margin: 0;
+      margin-bottom: 3rem;
     }
-    .beruf-detail {
-      background: rgba(255,255,255,0.06);
-      border-radius: 12px;
-      padding: 22px 18px;
-      margin: 20px auto;
-      max-width: 920px;
-      color: #f1f1f1;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+
+    header h1 {
+      font-weight: 600;
+      font-size: 3rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+      animation: fadeInDown 1s ease forwards;
+      color: inherit;
     }
-    .beruf-detail h3 {
-      margin-top: 0;
-      color: #ffd700;
-      font-size: 1.4em;
+
+    header p {
+      font-weight: 300;
+      font-size: 1.25rem;
+      opacity: 0.7;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+      color: inherit;
     }
-    .beruf-detail ul { margin: 8px 0 0 20px; }
-    @keyframes fadein {
-      to {
+
+    /* Button für Moduswechsel */
+    .toggle-btn {
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid currentColor;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-bottom: 2rem;
+      user-select: none;
+      color: inherit;
+    }
+
+    .toggle-btn:hover {
+      background-color: currentColor;
+      color: var(--color-light-bg);
+    }
+
+    body.dark .toggle-btn:hover {
+      color: var(--color-dark-bg);
+    }
+
+    /* Animationskeyframes */
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
         opacity: 1;
-        transform: none;
+        transform: translateY(0);
       }
     }
-    @media (max-width: 900px) {
-      .berufe-container { gap: 18px; }
-      .beruf-card { width: 95vw; min-width: 0; }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    @media (max-width: 600px) {
-      h1 { font-size: 1.3em; margin-top:18px;}
-      .studiengang-box { padding: 16px 8px 16px 8px; }
-      .berufe-title { font-size: 1.2em; }
-      .card-content { padding: 12px 4px 12px 4px; }
+
+    /* Hover-Effekt auf Name */
+    header h1:hover {
+      color: var(--color-light-accent);
+      transform: scale(1.05);
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark header h1:hover {
+      color: var(--color-dark-accent);
+    }
+
+    /* Info-Box */
+    .info-box {
+      max-width: 450px;
+      text-align: center;
+      border-radius: 20px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(15px);
+      animation: fadeInUp 1s ease forwards;
+      color: inherit;
+      margin-bottom: 2rem;
+    }
+
+    body.dark .info-box {
+      background: rgba(10, 31, 63, 0.85);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Abschnitt für Werdegang */
+    .career-box {
+      max-width: 450px;
+      border-radius: 20px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(15px);
+      color: inherit;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    body.dark .career-box {
+      background: rgba(10, 31, 63, 0.85);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Platzhalterstil */
+    .placeholder {
+      color: #888;
+      font-style: italic;
+      user-select: none;
     }
   </style>
 </head>
 <body>
-  <div class="content">
-    <h1>Wirtschaftsingenieurwesen Maschinenbau an der Hochschule Kempten</h1>
-    <div class="studiengang-box">
-      <p>
-        Der Bachelorstudiengang Wirtschaftsingenieurwesen Maschinenbau an der HS Kempten vereint technisches Know-how mit wirtschaftlichem Denken. Du lernst, wie innovative Produkte entwickelt, p[...] 
-      </p>
-      <p>
-        Studiendauer: 7 Semester &nbsp;|&nbsp; Abschluss: B.Eng. Wirtschaftsingenieurwesen Maschinenbau<br>
-        <b>Schwerpunkte:</b> Maschinenbau, Betriebswirtschaft, Projektmanagement, Digitalisierung, Fertigungstechnik, Controlling, Praxissemester.
-      </p>
-      <div class="studienverlauf-link">
-        <img src="Bildschirmfoto_6-10-2025_143234_.jpeg" alt="Studienverlaufsplan Wirtschaftsingenieurwesen Maschinenbau" class="studienverlauf-img">
-        <div class="studiumsablauf">Studiumsablauf</div>
-      </div>
-    </div>
+  <header>
+    <h1 contenteditable="true" aria-label="Name bearbeiten">Dein Name hier</h1>
+    <p contenteditable="true" aria-label="Begrüßung bearbeiten">Willkommen auf meiner persönlichen Homepage</p>
+  </header>
 
-    <div class="berufe-section">
-      <div class="berufe-title">Berufsperspektiven nach dem Studium</div>
-      <div class="berufe-container">
-        <a class="beruf-card" href="#projektmanager" title="Projektmanager:in">
-          <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80" alt="Projektmanager:in">
-          <div class="card-content">
-            <h2>Projektmanager:in</h2>
-            <p>Leite technische und wirtschaftliche Projekte, koordiniere Teams und sorge für reibungslose Abläufe.</p>
-          </div>
-        </a>
-        <a class="beruf-card" href="#produktionsleiter" title="Produktionsleiter:in">
-          <img src="https://images.unsplash.com/photo-1503389152951-9c3d8bcaab73?auto=format&fit=crop&w=600&q=80" alt="Produktionsleiter:in">
-          <div class="card-content">
-            <h2>Produktionsleiter:in</h2>
-            <p>Verantworte die effiziente Fertigung, optimiere Prozesse und führe Teams in der Produktion.</p>
-          </div>
-        </a>
-        <a class="beruf-card" href="#technische-einkaeufer" title="Technische:r Einkäufer:in">
-          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Technische:r Einkäufer:in">
-          <div class="card-content">
-            <h2>Technische:r Einkäufer:in</h2>
-            <p>Beschaffe komplexe technische Komponenten und führe Preisverhandlungen mit internationalen Partnern.</p>
-          </div>
-        </a>
-        <a class="beruf-card" href="#qualitaetsmanager" title="Qualitätsmanager:in">
-          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Qualitätsmanager:in">
-          <div class="card-content">
-            <h2>Qualitätsmanager:in</h2>
-            <p>Sichere die Qualität von Produkten und Prozessen – von der Entwicklung bis zur Auslieferung.</p>
-          </div>
-        </a>
-        <a class="beruf-card" href="#vertriebsingenieur" title="Vertriebsingenieur:in">
-          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Vertriebsingenieur:in">
-          <div class="card-content">
-            <h2>Vertriebsingenieur:in</h2>
-            <p>Berate Kunden technisch, erelle Angebote und begleite Projekte vom Erstkontakt bis zum Abschluss.</p>
-          </div>
-        </a>
-        <a class="beruf-card" href="#consultant" title="Consultant / Unternehmensberater:in">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Consultant">
-          <div class="card-content">
-            <h2>Consultant / Unternehmensberater:in</h2>
-            <p>Analysiere und optimiere Prozesse, unterstütze Unternehmen bei strategischen Entscheidungen.</p>
-          </div>
-        </a>
-        <!-- Weitere Berufe können ergänzt werden -->
-      </div>
+  <button class="toggle-btn" aria-label="Wechsel zwischen Light und Dark Mode">🌙 Modus wechseln</button>
 
-      <!-- Detail-Abschnitte für jeden Beruf -->
-      <div id="projektmanager" class="beruf-detail">
-        <h3>Projektmanager:in</h3>
-        <p>Als Projektmanager:in planst, steuerst und überwachst du technische sowie wirtschaftliche Projekte. Du erstellst Projektpläne, koordinierst interdisziplinäre Teams (z. B. Entwicklung, Produktion, Einkauf und Controlling), überwachst Budgets und Zeitpläne und stellst die Einhaltung von Qualitätsanforderungen sicher. Wichtige Fähigkeiten sind Projektmanagement-Methoden (z. B. PRINCE2, Agile/Scrum), Kommunikation, Risikomanagement und Kostenkontrolle.</p>
-        <p>Mögliche Arbeitgeber:</p>
-        <ul>
-          <li>Siemens AG</li>
-          <li>Bosch Gruppe</li>
-          <li>Automobilhersteller (z. B. BMW, Daimler)</li>
-          <li>Maschinenbau-Mittelstand (z. B. Maschinenbauer in der Region)</li>
-          <li>Technologie- und IT-Dienstleister</li>
-        </ul>
-      </div>
+  <section class="info-box">
+    <h2>Über mich</h2>
+    <p contenteditable="true" aria-label="Informationen über dich bearbeiten" class="placeholder">
+      Schreibe hier etwas über dich...
+    </p>
+  </section>
 
-      <div id="produktionsleiter" class="beruf-detail">
-        <h3>Produktionsleiter:in</h3>
-        <p>Als Produktionsleiter:in trägst du die Verantwortung für den gesamten Fertigungsbereich. Du optimierst Fertigungsprozesse, steuerst Personal und Maschinen, planst Kapazitäten und sorgst für eine effiziente Materialbereitstellung. Zusätzlich implementierst du Lean- und KVP-Maßnahmen, koordinierst Wartungs- und Instandhaltungsarbeiten und stellst Arbeitssicherheit sowie Qualitätsstandards sicher.</p>
-        <p>Mögliche Arbeitgeber:</p>
-        <ul>
-          <li>Automobilzulieferer</li>
-          <li>Große Industriebetriebe (z. B. Thyssenkrupp, MAN)</li>
-          <li>Elektronik- und Maschinenbauunternehmen</li>
-          <li>Produzierende KMU mit Serienfertigung</li>
-        </ul>
-      </div>
+  <section class="career-box">
+    <h2>Mein Werdegang</h2>
+    <p contenteditable="true" aria-label="Werdegang bearbeiten" class="placeholder">
+      Füge hier deinen Werdegang ein...
+    </p>
+  </section>
 
-      <div id="technische-einkaeufer" class="beruf-detail">
-        <h3>Technische:r Einkäufer:in</h3>
-        <p>Technische Einkäufer:innen sind verantwortlich für die Beschaffung von Bauteilen, Komponenten und Dienstleistungen. Deine Aufgaben umfassen Marktrecherchen, Lieferantenauswahl, Ausschreibungen, Verhandlung von Preisen und Konditionen sowie Vertragsmanagement. Außerdem koordinierst du Liefertermine, stellst die Qualität von Zukaufteilen sicher und arbeitest eng mit Entwicklung und Produktion zusammen.</p>
-        <p>Mögliche Arbeitgeber:</p>
-        <ul>
-          <li>Automobilhersteller und -zulieferer</li>
-          <li>Elektronik- und Maschinenbauunternehmen</li>
-          <li>Industriehändler und Distributoren</li>
-          <li>Großunternehmen mit zentralem Einkauf (z. B. Bosch, Siemens)</li>
-        </ul>
-      </div>
+  <script>
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const body = document.body;
 
-      <div id="qualitaetsmanager" class="beruf-detail">
-        <h3>Qualitätsmanager:in</h3>
-        <p>Qualitätsmanager:innen entwickeln und implementieren Qualitätsmanagementsysteme (z. B. ISO 9001) und überwachen die Produkt- und Prozessqualität. Du führst Audits durch, analysierst Fehlerursachen, leitest Korrekturmaßnahmen ein und arbeitest mit Lieferanten an Qualitätsverbesserungen. Datenanalyse, Prüfplanung, statistische Prozesslenkung (SPC) und ein tiefes Verständnis von Prüfverfahren gehören ebenfalls zu den Kernaufgaben.</p>
-        <p>Mögliche Arbeitgeber:</p>
-        <ul>
-          <li>Automobilhersteller und Zulieferer</li>
-          <li>Medizintechnik-Unternehmen</li>
-          <li>Maschinen- und Anlagenbauer</li>
-          <li>Unabhängige Prüf- und Zertifizierungsstellen</li>
-        </ul>
-      </div>
+    let darkMode = false;
 
-      <div id="vertriebsingenieur" class="beruf-detail">
-        <h3>Vertriebsingenieur:in</h3>
-        <p>Vertriebsingenieur:innen verbinden technisches Know-how mit verkäuferischen Fähigkeiten. Du berätst Kunden zu technischen Lösungen, erstellst Angebote, kalkulierst Kosten und begleitest Projekte bis zur Serienlieferung. Häufig unterstützt du den Vertrieb mit technischen Präsentationen, Machbarkeitsanalysen und der Anpassung von Produkten an Kundenanforderungen.</p>
-        <p>Mögliche Arbeitgeber:</p>
-        <ul>
-          <li>Maschinenbau- und Anlagenbauer</li>
-          <li>Elektronik- und Automatisierungsunternehmen</li>
-          <li>Technische Großhändler</li>
-          <li>Service- und Integrationsunternehmen</li>
-        </ul>
-      </div>
-
-      <div id="consultant" class="beruf-detail">
-        <h3>Consultant / Unternehmensberater:in</h3>
-        <p>Als Consultant berätst du Unternehmen in strategischen, organisatorischen oder prozessbezogenen Fragestellungen. Typische Aufgaben sind Prozessanalysen, Erarbeitung von Optimierungsmaßnahmen, Implementierung von Digitalisierungsprojekten und die Unterstützung bei Restrukturierungen. Hier sind analytisches Denken, Präsentations- und Moderationsfähigkeiten sowie Branchenwissen sehr wichtig.</p>
-        <p>Mögliche Arbeitgeber:</p>
-        <ul>
-          <li>Beratungsfirmen (z. B. McKinsey, BCG, Roland Berger)</li>
-          <li>Big Four und Technologieberatungen (z. B. Accenture, PwC)</li>
-          <li>Spezialisierte Ingenieur- und Prozessberatungen</li>
-          <li>Inhouse-Consulting-Abteilungen großer Industrieunternehmen</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
+    toggleBtn.addEventListener('click', () => {
+      darkMode = !darkMode;
+      if (darkMode) {
+        body.classList.add('dark');
+        toggleBtn.textContent = '☀️ Modus wechseln';
+      } else {
+        body.classList.remove('dark');
+        toggleBtn.textContent = '🌙 Modus wechseln';
+      }
+    });
+  </script>
 </body>
 </html>
